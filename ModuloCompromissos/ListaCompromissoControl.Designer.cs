@@ -28,31 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
+            listCompromisso = new ListBox();
             SuspendLayout();
             // 
-            // label1
+            // listCompromisso
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(28, 44);
-            label1.Name = "label1";
-            label1.Size = new Size(234, 25);
-            label1.TabIndex = 0;
-            label1.Text = "Visualizando compromissos";
+            listCompromisso.Dock = DockStyle.Fill;
+            listCompromisso.FormattingEnabled = true;
+            listCompromisso.ItemHeight = 25;
+            listCompromisso.Location = new Point(0, 0);
+            listCompromisso.Name = "listCompromisso";
+            listCompromisso.Size = new Size(670, 446);
+            listCompromisso.TabIndex = 0;
             // 
-            // ListaCompromissoControl
+            // listaCompromissoControl
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(label1);
-            Name = "ListaCompromissoControl";
-            Size = new Size(316, 255);
+            Controls.Add(listCompromisso);
+            Name = "listaCompromissoControl";
+            Size = new Size(670, 446);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
-        private Label label1;
+        private ListBox listCompromisso;
     }
 }

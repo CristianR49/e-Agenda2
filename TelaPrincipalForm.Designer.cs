@@ -30,16 +30,18 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaPrincipalForm));
             menuStrip1 = new MenuStrip();
-            toolStrip1 = new ToolStrip();
-            statusStrip1 = new StatusStrip();
             registrosMenuItem = new ToolStripMenuItem();
             contatosMenuItem = new ToolStripMenuItem();
             compromissosMenuItem = new ToolStripMenuItem();
-            toolStripButton1 = new ToolStripButton();
-            toolStripButton2 = new ToolStripButton();
-            toolStripButton3 = new ToolStripButton();
+            toolStrip1 = new ToolStrip();
+            btnInserir = new ToolStripButton();
+            btnEditar = new ToolStripButton();
+            btnExcluir = new ToolStripButton();
+            toolStripSeparator1 = new ToolStripSeparator();
+            LabelTipoCadastro = new ToolStripLabel();
+            statusStrip1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
-            panelRegistro = new Panel();
+            panelRegistros = new Panel();
             menuStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
@@ -55,15 +57,73 @@
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
+            // registrosMenuItem
+            // 
+            registrosMenuItem.DropDownItems.AddRange(new ToolStripItem[] { contatosMenuItem, compromissosMenuItem });
+            registrosMenuItem.Name = "registrosMenuItem";
+            registrosMenuItem.Size = new Size(101, 29);
+            registrosMenuItem.Text = "Registros";
+            // 
+            // contatosMenuItem
+            // 
+            contatosMenuItem.Name = "contatosMenuItem";
+            contatosMenuItem.Size = new Size(235, 34);
+            contatosMenuItem.Text = "Contatos";
+            // 
+            // compromissosMenuItem
+            // 
+            compromissosMenuItem.Name = "compromissosMenuItem";
+            compromissosMenuItem.Size = new Size(235, 34);
+            compromissosMenuItem.Text = "Compromissos";
+            compromissosMenuItem.Click += compromissosMenuItem_Click;
+            // 
             // toolStrip1
             // 
             toolStrip1.ImageScalingSize = new Size(24, 24);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripButton1, toolStripButton2, toolStripButton3 });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btnInserir, btnEditar, btnExcluir, toolStripSeparator1, LabelTipoCadastro });
             toolStrip1.Location = new Point(0, 33);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(800, 33);
             toolStrip1.TabIndex = 1;
             toolStrip1.Text = "toolStrip1";
+            // 
+            // btnInserir
+            // 
+            btnInserir.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnInserir.Image = (Image)resources.GetObject("btnInserir.Image");
+            btnInserir.ImageTransparentColor = Color.Magenta;
+            btnInserir.Name = "btnInserir";
+            btnInserir.Size = new Size(34, 28);
+            btnInserir.Text = "toolStripButton1";
+            // 
+            // btnEditar
+            // 
+            btnEditar.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnEditar.Image = (Image)resources.GetObject("btnEditar.Image");
+            btnEditar.ImageTransparentColor = Color.Magenta;
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(34, 28);
+            btnEditar.Text = "toolStripButton2";
+            // 
+            // btnExcluir
+            // 
+            btnExcluir.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnExcluir.Image = (Image)resources.GetObject("btnExcluir.Image");
+            btnExcluir.ImageTransparentColor = Color.Magenta;
+            btnExcluir.Name = "btnExcluir";
+            btnExcluir.Size = new Size(34, 28);
+            btnExcluir.Text = "toolStripButton3";
+            // 
+            // toolStripSeparator1
+            // 
+            toolStripSeparator1.Name = "toolStripSeparator1";
+            toolStripSeparator1.Size = new Size(6, 33);
+            // 
+            // LabelTipoCadastro
+            // 
+            LabelTipoCadastro.Name = "LabelTipoCadastro";
+            LabelTipoCadastro.Size = new Size(115, 28);
+            LabelTipoCadastro.Text = "tipoCadastro";
             // 
             // statusStrip1
             // 
@@ -75,73 +135,27 @@
             statusStrip1.TabIndex = 2;
             statusStrip1.Text = "statusStrip1";
             // 
-            // registrosMenuItem
-            // 
-            registrosMenuItem.DropDownItems.AddRange(new ToolStripItem[] { contatosMenuItem, compromissosMenuItem });
-            registrosMenuItem.Name = "registrosMenuItem";
-            registrosMenuItem.Size = new Size(101, 29);
-            registrosMenuItem.Text = "Registros";
-            // 
-            // contatosMenuItem
-            // 
-            contatosMenuItem.Name = "contatosMenuItem";
-            contatosMenuItem.Size = new Size(270, 34);
-            contatosMenuItem.Text = "Contatos";
-            // 
-            // compromissosMenuItem
-            // 
-            compromissosMenuItem.Name = "compromissosMenuItem";
-            compromissosMenuItem.Size = new Size(270, 34);
-            compromissosMenuItem.Text = "Compromissos";
-            // 
-            // toolStripButton1
-            // 
-            toolStripButton1.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            toolStripButton1.Image = (Image)resources.GetObject("toolStripButton1.Image");
-            toolStripButton1.ImageTransparentColor = Color.Magenta;
-            toolStripButton1.Name = "toolStripButton1";
-            toolStripButton1.Size = new Size(34, 28);
-            toolStripButton1.Text = "toolStripButton1";
-            // 
-            // toolStripButton2
-            // 
-            toolStripButton2.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            toolStripButton2.Image = (Image)resources.GetObject("toolStripButton2.Image");
-            toolStripButton2.ImageTransparentColor = Color.Magenta;
-            toolStripButton2.Name = "toolStripButton2";
-            toolStripButton2.Size = new Size(34, 28);
-            toolStripButton2.Text = "toolStripButton2";
-            // 
-            // toolStripButton3
-            // 
-            toolStripButton3.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            toolStripButton3.Image = (Image)resources.GetObject("toolStripButton3.Image");
-            toolStripButton3.ImageTransparentColor = Color.Magenta;
-            toolStripButton3.Name = "toolStripButton3";
-            toolStripButton3.Size = new Size(34, 28);
-            toolStripButton3.Text = "toolStripButton3";
-            // 
             // toolStripStatusLabel1
             // 
             toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             toolStripStatusLabel1.Size = new Size(179, 25);
             toolStripStatusLabel1.Text = "toolStripStatusLabel1";
             // 
-            // panelRegistro
+            // panelRegistros
             // 
-            panelRegistro.BorderStyle = BorderStyle.FixedSingle;
-            panelRegistro.Dock = DockStyle.Fill;
-            panelRegistro.Location = new Point(0, 66);
-            panelRegistro.Name = "panelRegistro";
-            panelRegistro.Size = new Size(800, 352);
-            panelRegistro.TabIndex = 3;
+            panelRegistros.BorderStyle = BorderStyle.FixedSingle;
+            panelRegistros.Dock = DockStyle.Fill;
+            panelRegistros.Location = new Point(0, 66);
+            panelRegistros.Name = "panelRegistros";
+            panelRegistros.Size = new Size(800, 352);
+            panelRegistros.TabIndex = 3;
             // 
             // TelaPrincipalForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(panelRegistro);
+            Controls.Add(panelRegistros);
             Controls.Add(statusStrip1);
             Controls.Add(toolStrip1);
             Controls.Add(menuStrip1);
@@ -149,7 +163,7 @@
             Name = "TelaPrincipalForm";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "e-Agenda";
+            Text = "e-Agenda 1.0";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             toolStrip1.ResumeLayout(false);
@@ -168,10 +182,12 @@
         private ToolStripMenuItem registrosMenuItem;
         private ToolStripMenuItem contatosMenuItem;
         private ToolStripMenuItem compromissosMenuItem;
-        private ToolStripButton toolStripButton1;
-        private ToolStripButton toolStripButton2;
-        private ToolStripButton toolStripButton3;
+        private ToolStripButton btnInserir;
+        private ToolStripButton btnEditar;
+        private ToolStripButton btnExcluir;
         private ToolStripStatusLabel toolStripStatusLabel1;
-        private Panel panelRegistro;
+        private Panel panelRegistros;
+        private ToolStripSeparator toolStripSeparator1;
+        private ToolStripLabel LabelTipoCadastro;
     }
 }

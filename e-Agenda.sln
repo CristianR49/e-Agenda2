@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "e-Agenda", "e-Agenda.csproj", "{4B4E99F8-2228-4F15-9E25-7535196915E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "e-Agenda", "e-Agenda.csproj", "{4B4E99F8-2228-4F15-9E25-7535196915E8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Testes", "..\Testes\Testes\Testes.csproj", "{B20526DD-85C8-4B08-A622-6C43A8CB602D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{4B4E99F8-2228-4F15-9E25-7535196915E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B4E99F8-2228-4F15-9E25-7535196915E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B4E99F8-2228-4F15-9E25-7535196915E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B20526DD-85C8-4B08-A622-6C43A8CB602D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B20526DD-85C8-4B08-A622-6C43A8CB602D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B20526DD-85C8-4B08-A622-6C43A8CB602D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B20526DD-85C8-4B08-A622-6C43A8CB602D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
