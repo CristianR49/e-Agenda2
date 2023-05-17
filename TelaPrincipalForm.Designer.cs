@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaPrincipalForm));
             menuStrip1 = new MenuStrip();
             registrosMenuItem = new ToolStripMenuItem();
             contatosMenuItem = new ToolStripMenuItem();
@@ -83,46 +82,49 @@
             toolStrip1.Items.AddRange(new ToolStripItem[] { btnInserir, btnEditar, btnExcluir, toolStripSeparator1, LabelTipoCadastro });
             toolStrip1.Location = new Point(0, 33);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(800, 33);
+            toolStrip1.Size = new Size(800, 47);
             toolStrip1.TabIndex = 1;
             toolStrip1.Text = "toolStrip1";
             // 
             // btnInserir
             // 
             btnInserir.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnInserir.Image = (Image)resources.GetObject("btnInserir.Image");
+            btnInserir.Image = Properties.Resources.add_circle_FILL0_wght400_GRAD0_opsz24;
             btnInserir.ImageTransparentColor = Color.Magenta;
             btnInserir.Name = "btnInserir";
-            btnInserir.Size = new Size(34, 28);
-            btnInserir.Text = "toolStripButton1";
+            btnInserir.Padding = new Padding(7);
+            btnInserir.Size = new Size(42, 42);
+            btnInserir.Text = "Inserir";
             // 
             // btnEditar
             // 
             btnEditar.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnEditar.Image = (Image)resources.GetObject("btnEditar.Image");
+            btnEditar.Image = Properties.Resources.edit_FILL0_wght400_GRAD0_opsz24;
             btnEditar.ImageTransparentColor = Color.Magenta;
             btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(34, 28);
-            btnEditar.Text = "toolStripButton2";
+            btnEditar.Padding = new Padding(7);
+            btnEditar.Size = new Size(42, 42);
+            btnEditar.Text = "Editar4";
             // 
             // btnExcluir
             // 
             btnExcluir.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnExcluir.Image = (Image)resources.GetObject("btnExcluir.Image");
+            btnExcluir.Image = Properties.Resources.delete_FILL0_wght400_GRAD0_opsz24;
             btnExcluir.ImageTransparentColor = Color.Magenta;
             btnExcluir.Name = "btnExcluir";
-            btnExcluir.Size = new Size(34, 28);
-            btnExcluir.Text = "toolStripButton3";
+            btnExcluir.Padding = new Padding(7);
+            btnExcluir.Size = new Size(42, 42);
+            btnExcluir.Text = "Excluir";
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(6, 33);
+            toolStripSeparator1.Size = new Size(6, 47);
             // 
             // LabelTipoCadastro
             // 
             LabelTipoCadastro.Name = "LabelTipoCadastro";
-            LabelTipoCadastro.Size = new Size(115, 28);
+            LabelTipoCadastro.Size = new Size(115, 42);
             LabelTipoCadastro.Text = "tipoCadastro";
             // 
             // statusStrip1
@@ -145,9 +147,9 @@
             // 
             panelRegistros.BorderStyle = BorderStyle.FixedSingle;
             panelRegistros.Dock = DockStyle.Fill;
-            panelRegistros.Location = new Point(0, 66);
+            panelRegistros.Location = new Point(0, 80);
             panelRegistros.Name = "panelRegistros";
-            panelRegistros.Size = new Size(800, 352);
+            panelRegistros.Size = new Size(800, 338);
             panelRegistros.TabIndex = 3;
             // 
             // TelaPrincipalForm
