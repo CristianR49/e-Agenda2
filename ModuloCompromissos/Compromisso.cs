@@ -1,4 +1,5 @@
-﻿using System;
+﻿using e_Agenda.Compartilhado;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace e_Agenda.ModuloCompromissos
 {
-    internal class Compromisso
+    public class Compromisso : EntidadeBase
     {
         public int id;
         public string assunto;
@@ -16,9 +17,8 @@ namespace e_Agenda.ModuloCompromissos
         public TimeOnly horaInicio;
         public TimeOnly horaTermino;
 
-        public Compromisso(int id, string assunto, string local, string contato, DateOnly dataCompromisso, TimeOnly horaInicio, TimeOnly horaTermino)
+        public Compromisso(string assunto, string local, string contato, DateOnly dataCompromisso, TimeOnly horaInicio, TimeOnly horaTermino)
         {
-            this.id = id;
             this.assunto = assunto;
             this.local = local;
             this.contato = contato;

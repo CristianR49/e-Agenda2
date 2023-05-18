@@ -90,31 +90,37 @@
             // 
             btnInserir.DisplayStyle = ToolStripItemDisplayStyle.Image;
             btnInserir.Image = Properties.Resources.add_circle_FILL0_wght400_GRAD0_opsz24;
+            btnInserir.ImageScaling = ToolStripItemImageScaling.None;
             btnInserir.ImageTransparentColor = Color.Magenta;
             btnInserir.Name = "btnInserir";
             btnInserir.Padding = new Padding(7);
             btnInserir.Size = new Size(42, 42);
             btnInserir.Text = "Inserir";
+            btnInserir.Click += btnInserir_Click;
             // 
             // btnEditar
             // 
             btnEditar.DisplayStyle = ToolStripItemDisplayStyle.Image;
             btnEditar.Image = Properties.Resources.edit_FILL0_wght400_GRAD0_opsz24;
+            btnEditar.ImageScaling = ToolStripItemImageScaling.None;
             btnEditar.ImageTransparentColor = Color.Magenta;
             btnEditar.Name = "btnEditar";
             btnEditar.Padding = new Padding(7);
             btnEditar.Size = new Size(42, 42);
             btnEditar.Text = "Editar4";
+            btnEditar.Click += btnEditar_Click;
             // 
             // btnExcluir
             // 
             btnExcluir.DisplayStyle = ToolStripItemDisplayStyle.Image;
             btnExcluir.Image = Properties.Resources.delete_FILL0_wght400_GRAD0_opsz24;
+            btnExcluir.ImageScaling = ToolStripItemImageScaling.None;
             btnExcluir.ImageTransparentColor = Color.Magenta;
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Padding = new Padding(7);
             btnExcluir.Size = new Size(42, 42);
             btnExcluir.Text = "Excluir";
+            btnExcluir.Click += btnExcluir_Click;
             // 
             // toolStripSeparator1
             // 
