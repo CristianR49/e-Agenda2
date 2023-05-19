@@ -1,17 +1,35 @@
 using e_Agenda.Compartilhado;
 using e_Agenda.ModuloCompromissos;
+using e_Agenda.WinApp.ModuloContatos;
 
 namespace e_Agenda
 {
     public partial class TelaPrincipalForm : Form
     {
         private ControladorBase controlador;
+        private RepositorioContato repositorioContato = new RepositorioContato();
         private RepositorioCompromisso repositorioCompromisso = new RepositorioCompromisso();
+        private TelaFiltroCompromissoForm TelaFiltroCompromisso = new TelaFiltroCompromissoForm();
+        
+
         public TelaPrincipalForm()
         {
             InitializeComponent();
 
+            repositorioContato.PopularRegistrosAutomaticamente();
+            repositorioCompromisso.repositorioContato = repositorioContato;
             repositorioCompromisso.PopularRegistrosAutomaticamente();
+
+            toolStrip1.Enabled = false;
+        }
+
+        private void contatosMenuItem_Click(object sender, EventArgs e)
+        {
+            controlador = new ControladorContato(repositorioContato);
+
+            ConfigurarTelaPrincipal(controlador);
+
+            toolStrip1.Enabled = true;
         }
 
         private void compromissosMenuItem_Click(object sender, EventArgs e)
@@ -21,6 +39,17 @@ namespace e_Agenda
 
             ConfigurarTelaPrincipal(controlador);
 
+            toolStrip1.Enabled = true;
+
+            //editar
+            VisualizandoCompromissos();
+        }
+
+        private void VisualizandoCompromissos()
+        {
+            List<Compromisso> compromissos = repositorioCompromisso.SelecionarTodos();
+
+            StatusLabel.Text = $"Visualizando {compromissos.Count} Compromissos(s)";
         }
 
         private void ConfigurarTelaPrincipal(ControladorBase controladorBase)
@@ -29,10 +58,10 @@ namespace e_Agenda
 
             ConfigurarToolTips(controlador);
 
-            ConfigurarListagem(controlador);
+            ConfigurarLista(controlador);
         }
 
-        private void ConfigurarListagem(ControladorBase controladorBase)
+        private void ConfigurarLista(ControladorBase controladorBase)
         {
             UserControl lista = controladorBase.ObterLista();
 
@@ -45,24 +74,57 @@ namespace e_Agenda
 
         private void ConfigurarToolTips(ControladorBase controladorBase)
         {
-            btnInserir.ToolTipText = controladorBase.toolTipInserir;
-            btnEditar.ToolTipText = controladorBase.toolTipEditar;
-            btnExcluir.ToolTipText = controladorBase.toolTipExcluir;
+            btnInserir.ToolTipText = controladorBase.ToolTipInserir;
+            btnEditar.ToolTipText = controladorBase.ToolTipEditar;
+            btnExcluir.ToolTipText = controladorBase.ToolTipExcluir;
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
         {
+            StatusLabel.Text = $"Inserindo {controlador.NomeEntidade}";
+
+            controlador.repositorioContato = repositorioContato;
+
             controlador.Inserir();
+
+            VisualizandoCompromissos();
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
+            StatusLabel.Text = $"Editando {controlador.NomeEntidade}";
+
+            controlador.repositorioContato = repositorioContato;
+
             controlador.Editar();
+
+            VisualizandoCompromissos();
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
+            StatusLabel.Text = $"Excluindo {controlador.NomeEntidade}";
+
             controlador.Excluir();
+
+            VisualizandoCompromissos();
+        }
+
+        private void FiltrarMenuItem_Click(object sender, EventArgs e)
+        {
+            StatusLabel.Text = $"Filtrando visualização de {controlador.NomeEntidade}";
+
+            toolStrip1.Enabled = true;
+
+            controlador = new ControladorCompromisso(repositorioCompromisso);
+
+            ConfigurarTelaPrincipal(controlador);
+
+            ControladorCompromisso controladorCompromisso = (ControladorCompromisso)controlador;
+
+            controladorCompromisso.Filtrar();
+
+            VisualizandoCompromissos();
         }
     }
 }

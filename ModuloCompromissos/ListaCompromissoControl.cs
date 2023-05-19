@@ -31,5 +31,26 @@ namespace e_Agenda.ModuloCompromissos
         {
             return (Compromisso)listCompromisso.SelectedItem;
         }
+
+        public void MostrarCompromissosPassados(List<Compromisso> compromissosPassados)
+        {
+            listCompromisso.Items.Clear();
+
+            foreach (Compromisso c in compromissosPassados)
+            {
+                listCompromisso.Items.Add(c);
+            }
+        }
+
+        public void MostrarCompromissosFuturos(List<Compromisso> compromissosFuturos)
+        {
+            listCompromisso.Items.Clear();
+
+            foreach (Compromisso c in compromissosFuturos)
+            {
+                listCompromisso.Items.Add(c);
+            }
+
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using e_Agenda.Compartilhado;
+using e_Agenda.WinApp.ModuloContatos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,12 +13,12 @@ namespace e_Agenda.ModuloCompromissos
         public int id;
         public string assunto;
         public string local;
-        public string contato;
+        public Contato contato;
         public DateOnly dataCompromisso;
         public TimeOnly horaInicio;
         public TimeOnly horaTermino;
 
-        public Compromisso(string assunto, string local, string contato, DateOnly dataCompromisso, TimeOnly horaInicio, TimeOnly horaTermino)
+        public Compromisso(string assunto, string local, Contato contato, DateOnly dataCompromisso, TimeOnly horaInicio, TimeOnly horaTermino)
         {
             this.assunto = assunto;
             this.local = local;
@@ -29,7 +30,7 @@ namespace e_Agenda.ModuloCompromissos
 
         public override string ToString()
         {
-            return $"id: {id} Assunto: {assunto} Local: {local} Contato: {contato} Data do compromisso: {dataCompromisso} Hora de início: {horaInicio} Hora do término: {horaTermino}";
+            return $"id: {id} Assunto: {assunto} Local: {local} Contato: {contato.nome} Data do compromisso: {dataCompromisso} Hora de início: {horaInicio} Hora do término: {horaTermino}";
         }
     }
 }

@@ -32,6 +32,7 @@
             registrosMenuItem = new ToolStripMenuItem();
             contatosMenuItem = new ToolStripMenuItem();
             compromissosMenuItem = new ToolStripMenuItem();
+            FiltrarMenuItem = new ToolStripMenuItem();
             toolStrip1 = new ToolStrip();
             btnInserir = new ToolStripButton();
             btnEditar = new ToolStripButton();
@@ -39,7 +40,7 @@
             toolStripSeparator1 = new ToolStripSeparator();
             LabelTipoCadastro = new ToolStripLabel();
             statusStrip1 = new StatusStrip();
-            toolStripStatusLabel1 = new ToolStripStatusLabel();
+            StatusLabel = new ToolStripStatusLabel();
             panelRegistros = new Panel();
             menuStrip1.SuspendLayout();
             toolStrip1.SuspendLayout();
@@ -66,15 +67,24 @@
             // contatosMenuItem
             // 
             contatosMenuItem.Name = "contatosMenuItem";
-            contatosMenuItem.Size = new Size(235, 34);
+            contatosMenuItem.Size = new Size(270, 34);
             contatosMenuItem.Text = "Contatos";
+            contatosMenuItem.Click += contatosMenuItem_Click;
             // 
             // compromissosMenuItem
             // 
+            compromissosMenuItem.DropDownItems.AddRange(new ToolStripItem[] { FiltrarMenuItem });
             compromissosMenuItem.Name = "compromissosMenuItem";
-            compromissosMenuItem.Size = new Size(235, 34);
+            compromissosMenuItem.Size = new Size(270, 34);
             compromissosMenuItem.Text = "Compromissos";
             compromissosMenuItem.Click += compromissosMenuItem_Click;
+            // 
+            // FiltrarMenuItem
+            // 
+            FiltrarMenuItem.Name = "FiltrarMenuItem";
+            FiltrarMenuItem.Size = new Size(158, 34);
+            FiltrarMenuItem.Text = "Filtrar";
+            FiltrarMenuItem.Click += FiltrarMenuItem_Click;
             // 
             // toolStrip1
             // 
@@ -136,18 +146,18 @@
             // statusStrip1
             // 
             statusStrip1.ImageScalingSize = new Size(24, 24);
-            statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1 });
+            statusStrip1.Items.AddRange(new ToolStripItem[] { StatusLabel });
             statusStrip1.Location = new Point(0, 418);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.Size = new Size(800, 32);
             statusStrip1.TabIndex = 2;
             statusStrip1.Text = "statusStrip1";
             // 
-            // toolStripStatusLabel1
+            // StatusLabel
             // 
-            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            toolStripStatusLabel1.Size = new Size(179, 25);
-            toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            StatusLabel.Name = "StatusLabel";
+            StatusLabel.Size = new Size(83, 25);
+            StatusLabel.Text = "Cadastro";
             // 
             // panelRegistros
             // 
@@ -193,9 +203,10 @@
         private ToolStripButton btnInserir;
         private ToolStripButton btnEditar;
         private ToolStripButton btnExcluir;
-        private ToolStripStatusLabel toolStripStatusLabel1;
+        private ToolStripStatusLabel StatusLabel;
         private Panel panelRegistros;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripLabel LabelTipoCadastro;
+        private ToolStripMenuItem FiltrarMenuItem;
     }
 }

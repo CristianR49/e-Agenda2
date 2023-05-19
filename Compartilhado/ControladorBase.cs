@@ -1,4 +1,5 @@
-﻿using System;
+﻿using e_Agenda.WinApp.ModuloContatos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,11 +9,13 @@ namespace e_Agenda.Compartilhado
 {
     public abstract class ControladorBase
     {
-        public abstract string toolTipInserir { get; }
+        public RepositorioContato repositorioContato;
+        public abstract string ToolTipInserir { get; }
 
-        public abstract string toolTipEditar { get; }
+        public abstract string ToolTipEditar { get; }
 
-        public abstract string toolTipExcluir { get; }
+        public abstract string ToolTipExcluir { get; }
+        public abstract string NomeEntidade { get; }
 
         public abstract void Inserir();
 

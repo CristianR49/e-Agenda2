@@ -1,4 +1,5 @@
 ﻿using e_Agenda.Compartilhado;
+using e_Agenda.WinApp.ModuloContatos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,22 +12,27 @@ namespace e_Agenda.ModuloCompromissos
     {
         private RepositorioCompromisso repositorioCompromisso;
         private ListaCompromissoControl listaCompromissoControl;
-        public ControladorCompromisso(RepositorioCompromisso repositorioCompromisso) 
+        private TelaCompromissoForm telaCompromisso = new TelaCompromissoForm();
+        private TelaFiltroCompromissoForm telaFiltro = new TelaFiltroCompromissoForm();
+        public ControladorCompromisso(RepositorioCompromisso repositorioCompromisso)
         {
             this.repositorioCompromisso = repositorioCompromisso;
         }
-        public override string toolTipInserir { get { return "Inserir um novo Compromisso"; } }
+        public override string ToolTipInserir { get { return "Inserir um novo Compromisso"; } }
 
-        public override string toolTipEditar { get { return "Editar um Compromisso existente"; } }
+        public override string ToolTipEditar { get { return "Editar um Compromisso existente"; } }
 
-        public override string toolTipExcluir { get { return "Excluir um compromisso Compromisso existente"; } }
+        public override string ToolTipExcluir { get { return "Excluir um compromisso Compromisso existente"; } }
+
+        public override string NomeEntidade { get { return "Compromisso"; } }
         public override void Inserir()
         {
-            TelaCompromissoForm telaCompromisso = new TelaCompromissoForm();
+
+            telaCompromisso.Contatos = repositorioContato.SelecionarTodos();
 
             DialogResult opcaoEscolhida = telaCompromisso.ShowDialog();
 
-            if(opcaoEscolhida == DialogResult.OK)
+            if (opcaoEscolhida == DialogResult.OK)
             {
                 MessageBox.Show("Informações gravadas");
 
@@ -35,13 +41,27 @@ namespace e_Agenda.ModuloCompromissos
                 repositorioCompromisso.Inserir(compromisso);
 
                 CarregarCompromissos();
+
+
             }
         }
         public override void Editar()
         {
-            TelaCompromissoForm telaCompromisso = new TelaCompromissoForm();
+            Compromisso compromisso = listaCompromissoControl.ObterCompromissoSelecionado();
 
-            telaCompromisso.Compromisso = listaCompromissoControl.ObterCompromissoSelecionado();
+            if (compromisso == null)
+            {
+                MessageBox.Show($"Selecione um Compromisso primeiro!",
+                    "Edição de Compromissos",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+
+                return;
+            }
+
+            telaCompromisso.Contatos = repositorioContato.SelecionarTodos();
+
+            telaCompromisso.Compromisso = compromisso;
 
             DialogResult opcaoEscolhida = telaCompromisso.ShowDialog();
 
@@ -49,7 +69,7 @@ namespace e_Agenda.ModuloCompromissos
             {
                 MessageBox.Show("Informações Editadas");
 
-                Compromisso compromisso = telaCompromisso.Compromisso;
+                compromisso = telaCompromisso.Compromisso;
 
                 repositorioCompromisso.Editar(compromisso);
 
@@ -95,6 +115,72 @@ namespace e_Agenda.ModuloCompromissos
         {
             return "Cadastro de Compromissos";
         }
+
+        public void Filtrar()
+        {
+            DialogResult opcaoEscolhida = telaFiltro.ShowDialog();
+
+            if (opcaoEscolhida == DialogResult.OK)
+            {
+
+                if (telaFiltro.TodosOsCompromissosCheck == true)
+                {
+                    CarregarCompromissos();
+                    telaFiltro.TodosOsCompromissosCheck = false;
+                }
+                if (telaFiltro.CompromissosPassadosCheck == true)
+                {
+                    VisualizarCompromissosPassados();
+                    telaFiltro.CompromissosPassadosCheck = false;
+                }
+                if (telaFiltro.CompromissosFuturosCheck == true)
+                {
+                    VisualizarCompromissosFuturos(telaFiltro.DataInicio, telaFiltro.DataFim);
+                }
+
+            }
+        }
+
+        private void VisualizarCompromissosPassados()
+        {
+
+            List<Compromisso> compromissos = repositorioCompromisso.SelecionarTodos();
+
+            List<Compromisso> compromissosPassados = new List<Compromisso>();
+
+            DateTime hoje = DateTime.Now;
+
+            DateOnly dataHoje = DateOnly.FromDateTime(hoje);
+
+            TimeOnly horaAgora = TimeOnly.FromDateTime(hoje);
+
+            foreach (Compromisso c in compromissos)
+            {
+                if (c.dataCompromisso < dataHoje || c.dataCompromisso == dataHoje && c.horaTermino < horaAgora)
+                    compromissosPassados.Add(c);
+            }
+
+            listaCompromissoControl.MostrarCompromissosPassados(compromissosPassados);
+        }
+
+        private void VisualizarCompromissosFuturos(DateTime dataInicio, DateTime dataFim)
+        {
+            List<Compromisso> compromissos = repositorioCompromisso.SelecionarTodos();
+
+            List<Compromisso> compromissosFuturos = new List<Compromisso>();
+
+
+
+            foreach (Compromisso c in compromissos)
+            {
+                DateTime data = c.dataCompromisso.ToDateTime(TimeOnly.Parse("00:00"));
+                if (data > dataInicio && data < dataFim)
+                    compromissosFuturos.Add(c);
+            }
+
+            listaCompromissoControl.MostrarCompromissosFuturos(compromissosFuturos);
+        }
+
 
     }
 }

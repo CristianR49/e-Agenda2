@@ -36,7 +36,6 @@
             label2 = new Label();
             txtLocal = new TextBox();
             label3 = new Label();
-            txtContato = new TextBox();
             label4 = new Label();
             txtHorarioInicio = new TextBox();
             label5 = new Label();
@@ -44,6 +43,7 @@
             label6 = new Label();
             txtHorarioTermino = new TextBox();
             label7 = new Label();
+            boxContato = new ComboBox();
             SuspendLayout();
             // 
             // btnGravar
@@ -82,8 +82,10 @@
             // 
             txtId.Location = new Point(102, 29);
             txtId.Name = "txtId";
+            txtId.ReadOnly = true;
             txtId.Size = new Size(150, 31);
             txtId.TabIndex = 3;
+            txtId.Text = "0";
             // 
             // txtAssunto
             // 
@@ -116,13 +118,6 @@
             label3.Size = new Size(80, 25);
             label3.TabIndex = 6;
             label3.Text = "Contato:";
-            // 
-            // txtContato
-            // 
-            txtContato.Location = new Point(102, 177);
-            txtContato.Name = "txtContato";
-            txtContato.Size = new Size(150, 31);
-            txtContato.TabIndex = 9;
             // 
             // label4
             // 
@@ -181,18 +176,27 @@
             label7.TabIndex = 14;
             label7.Text = "Horário do término:";
             // 
+            // boxContato
+            // 
+            boxContato.FormattingEnabled = true;
+            boxContato.Location = new Point(102, 180);
+            boxContato.Name = "boxContato";
+            boxContato.Size = new Size(150, 33);
+            boxContato.TabIndex = 16;
+            boxContato.MouseClick += boxContato_MouseClick;
+            // 
             // TelaCompromissoForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(643, 364);
+            Controls.Add(boxContato);
             Controls.Add(txtHorarioTermino);
             Controls.Add(label7);
             Controls.Add(txtHorarioInicio);
             Controls.Add(label5);
             Controls.Add(txtDataCompromisso);
             Controls.Add(label6);
-            Controls.Add(txtContato);
             Controls.Add(label4);
             Controls.Add(txtLocal);
             Controls.Add(label3);
@@ -207,7 +211,7 @@
             MinimizeBox = false;
             Name = "TelaCompromissoForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "TelaCompromissoForm";
+            Text = "Cadastro de Compromissos";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -230,5 +234,6 @@
         private Label label6;
         private TextBox txtHorarioTermino;
         private Label label7;
+        private ComboBox boxContato;
     }
 }
