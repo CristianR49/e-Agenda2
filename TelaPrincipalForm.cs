@@ -42,14 +42,7 @@ namespace e_Agenda
             toolStrip1.Enabled = true;
 
             //editar
-            VisualizandoCompromissos();
-        }
-
-        private void VisualizandoCompromissos()
-        {
-            List<Compromisso> compromissos = repositorioCompromisso.SelecionarTodos();
-
-            StatusLabel.Text = $"Visualizando {compromissos.Count} Compromissos(s)";
+            VisualizarQuantidadeRegistros();
         }
 
         private void ConfigurarTelaPrincipal(ControladorBase controladorBase)
@@ -87,7 +80,7 @@ namespace e_Agenda
 
             controlador.Inserir();
 
-            VisualizandoCompromissos();
+            VisualizarQuantidadeRegistros();
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -98,7 +91,7 @@ namespace e_Agenda
 
             controlador.Editar();
 
-            VisualizandoCompromissos();
+            VisualizarQuantidadeRegistros();
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -107,8 +100,16 @@ namespace e_Agenda
 
             controlador.Excluir();
 
-            VisualizandoCompromissos();
+            VisualizarQuantidadeRegistros();
         }
+
+        private void VisualizarQuantidadeRegistros()
+        {
+            List<Compromisso> compromissos = repositorioCompromisso.SelecionarTodos();
+
+            StatusLabel.Text = $"Visualizando {compromissos.Count} Compromissos(s)";
+        }
+
 
         private void FiltrarMenuItem_Click(object sender, EventArgs e)
         {
@@ -124,7 +125,7 @@ namespace e_Agenda
 
             controladorCompromisso.Filtrar();
 
-            VisualizandoCompromissos();
+            VisualizarQuantidadeRegistros();
         }
     }
 }
